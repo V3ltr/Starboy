@@ -12,12 +12,11 @@
 
 | Part | What it's for | Qty | Unit | Total | Vendor |
 | --- | --- | --- | --- | --- | --- |
-| [XIAO ESP32C3](https://www.amazon.com/cart?ref_=ox_ewc_ret_gtc_dsk_us) | Its the main microcontroller | 1 | $9.90 | $9.90 | [Amazon](https://www.amazon.com/cart?ref_=ox_ewc_ret_gtc_dsk_us) |
 | [Break Away Strip Headers 1x4](https://www.amazon.com/gp/product/B08WYCVP98/ref=ox_sc_act_image_2?smid=A1A96JMJTF057G&psc=1) | to connect the pcb and the ther parts together | 1 | $4.99 | $4.99 | [Amazon](https://www.amazon.com/gp/product/B08WYCVP98/ref=ox_sc_act_image_2?smid=A1A96JMJTF057G&psc=1) |
 | [DHT11](https://www.amazon.com/gp/product/B0CRRXJ83F/ref=ox_sc_act_image_3?smid=AGBPQLQT372PL&psc=1) | Sensing the tempriture and moisture | 1 | $3.78 | $3.78 | [Amazon](https://www.amazon.com/gp/product/B0CRRXJ83F/ref=ox_sc_act_image_3?smid=AGBPQLQT372PL&psc=1) |
 | [10K ohm Resistor](https://www.amazon.com/gp/product/B0BDKY8VQG/ref=ox_sc_act_image_4?smid=A2XLLJ8HYD6SMA&th=1) | Lowering the voltage | 1 | $3.99 | $3.99 | [Amazon](https://www.amazon.com/gp/product/B0BDKY8VQG/ref=ox_sc_act_image_4?smid=A2XLLJ8HYD6SMA&th=1) |
-| **Parts subtotal** | — | — | — | **$22.66** | — |
+| **Parts subtotal** | — | — | — | **$12.76** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$22.66** | — |
+| **Total** | — | — | — | **$12.76** | — |
 
-$7.34 left of the tier's funding.
+$17.24 left of the tier's funding.
