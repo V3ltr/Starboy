@@ -14,7 +14,7 @@
 | --- | --- | --- | --- | --- | --- |
 | [Pin Header 1x4](https://www.aliexpress.com/item/1005006733621288.html?spm=a2g0o.cart.0.0.cac638daai5UXf&mp=1&pdp_npi=6%40dis!CZK!CZK+82.19!CZK+82.19!!CZK+82.19!!!%4021038efe17915713715502418e0de7!12000038123990307!ct!CZ!8274876912!!1!0!) | To connect the pcb and the components | 1 | $3.77 | $3.77 | [AliExpress](https://www.aliexpress.com/item/1005006733621288.html?spm=a2g0o.cart.0.0.cac638daai5UXf&mp=1&pdp_npi=6%40dis!CZK!CZK+82.19!CZK+82.19!!CZK+82.19!!!%4021038efe17915713715502418e0de7!12000038123990307!ct!CZ!8274876912!!1!0!) |
 | **Parts subtotal** | — | — | — | **$3.77** | — |
-| **Tax & shipping** | — | — | — | **$23.00** | — |
-| **Total** | — | — | — | **$26.77** | — |
+| **Tax & shipping** | — | — | — | **$0.00** | — |
+| **Total** | — | — | — | **$3.77** | — |
 
-$3.23 left of the tier's funding.
+$26.23 left of the tier's funding.
