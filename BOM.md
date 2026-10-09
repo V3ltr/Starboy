@@ -12,13 +12,12 @@
 
 | Part | What it's for | Qty | Unit | Total | Vendor |
 | --- | --- | --- | --- | --- | --- |
-| [DHT11](https://www.hwkitchen.cz/snimac-teploty-a-vlhkosti-dht11/?srsltid=AU7gw4XBDmbHLu4vsyV-qKAeZsXmpC_hujMAtWMWmfBIjTU7RulETXOm) | Sensing heat and moisture | 1 | $2.07 | $2.07 | [HWKitchen](https://www.hwkitchen.cz/snimac-teploty-a-vlhkosti-dht11/?srsltid=AU7gw4XBDmbHLu4vsyV-qKAeZsXmpC_hujMAtWMWmfBIjTU7RulETXOm) |
 | [rezistor 10K](https://dratek.cz/arduino-platforma/7650-rezistor-10k-0.25-w-1.html) | To lower the current | 2 | $1.86 | $3.72 | [Dratek](https://dratek.cz/arduino-platforma/7650-rezistor-10k-0.25-w-1.html) |
 | [Cherry MX Purple Switch](https://www.ctrlshop.cz/znacka/cherry) | Its used for the buttons in the starbie | 2 | $5.97 | $11.94 | [CTRLshop](https://www.ctrlshop.cz/znacka/cherry) |
 | [Pin header pin strips  01x08](https://www.gsmcentrum.cz/kolikova-lista-kolikove-vidlice-pin-8-primy-2mm-tht-1x8) | To connect the parts together | 10 | $0.07 | $0.70 | [GSMCentrum](https://www.gsmcentrum.cz/kolikova-lista-kolikove-vidlice-pin-8-primy-2mm-tht-1x8) |
 | [Pin headers 2.54 mm, 1X04](https://www.reichelt.com/de/en/shop/product/pin_headers_2_54_mm_1x04_straight-119881) | connecting the parts together | 2 | $0.12 | $0.24 | [Reichelt](https://www.reichelt.com/de/en/shop/product/pin_headers_2_54_mm_1x04_straight-119881) |
-| **Parts subtotal** | — | — | — | **$18.67** | — |
+| **Parts subtotal** | — | — | — | **$16.60** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$18.67** | — |
+| **Total** | — | — | — | **$16.60** | — |
 
-$11.33 left of the tier's funding.
+$13.40 left of the tier's funding.
