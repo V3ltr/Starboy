@@ -16,7 +16,7 @@
 | [metal film resistor 1%](https://www.aliexpress.com/item/1005007643210127.html?spm=a2g0o.cart.0.0.cac638daai5UXf&mp=1&pdp_npi=6%40dis!CZK!CZK+16.56!CZK+16.56!!CZK+16.56!!!%4021038efe17915713715502418e0de7!12000041624997361!ct!CZ!8274876912!!1!0!) | Lowering the current | 1 | $0.76 | $0.76 | [AliExpress](https://www.aliexpress.com/item/1005007643210127.html?spm=a2g0o.cart.0.0.cac638daai5UXf&mp=1&pdp_npi=6%40dis!CZK!CZK+16.56!CZK+16.56!!CZK+16.56!!!%4021038efe17915713715502418e0de7!12000041624997361!ct!CZ!8274876912!!1!0!) |
 | [DHT11](https://www.aliexpress.com/item/4000158225419.html?spm=a2g0o.detail.0.0.7b76iykSiykSaV&mp=1&pdp_npi=6%40dis!CZK!CZK+49.09!CZK+49.09!!CZK+49.09!!!%4021038efe17915713864962904e0de7!10000000499422329!ct!CZ!8274876912!!1!0!) | Sensing the heat and moisture | 1 | $2.25 | $2.25 | [AliExpress](https://www.aliexpress.com/item/4000158225419.html?spm=a2g0o.detail.0.0.7b76iykSiykSaV&mp=1&pdp_npi=6%40dis!CZK!CZK+49.09!CZK+49.09!!CZK+49.09!!!%4021038efe17915713864962904e0de7!10000000499422329!ct!CZ!8274876912!!1!0!) |
 | **Parts subtotal** | — | — | — | **$6.78** | — |
-| **Tax & shipping** | — | — | — | **$15.00** | — |
-| **Total** | — | — | — | **$21.78** | — |
+| **Tax & shipping** | — | — | — | **$19.89** | — |
+| **Total** | — | — | — | **$26.67** | — |
 
-$8.22 left of the tier's funding.
+$3.33 left of the tier's funding.
