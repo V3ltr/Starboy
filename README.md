@@ -7,4 +7,4 @@ This project only includes only the PCB but in my other projects you can find th
 It is a device that senses heat, moisture and has a face to show what its feeling.
 I made it because I wanted my bag to have more of a personality with interactive emotions and more! (100% not the printer ;] halflife.hackclub.com!!!)
 It does look like any other Starboy but it features a underwater theme that also has a custom interface and 3D model themed with the ocean!
-Ive always wanted a starbie, but here in the Czech Republic 2-14000,-czk is criminal.
+Ive always wanted a starbie, but here in the Czech Republic 2-14000,-czk is criminal so im grateful hackclub is helping me in this sense.
