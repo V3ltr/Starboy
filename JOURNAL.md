@@ -23,6 +23,8 @@
 ### 2026-10-08 – Work session
 
 **2.12h**
+<img width="671" height="234" alt="Screenshot 2026-10-16 194037" src="https://github.com/user-attachments/assets/73007a5d-f0e9-41fd-b40d-83a1f8856de1" />
+
 
 [Timelapse](https://lookout.hackclub.com/api/media/c5ba19dd-2f19-4b9d-836b-e9f66eda1b12/video.mp4)
 
