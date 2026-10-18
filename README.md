@@ -11,7 +11,7 @@ Ive always wanted a starbie, but here in the Czech Republic 2-14000,-czk is crim
 Also for the kind reviewer working on my project... please note that the originality in sin the UI+Enclosure+Eye theme
 
 [BOM.csv](https://github.com/user-attachments/files/33613975/BOM.csv)
-PLA 1KG white,11.50$
-Blue Spray paint,4.39$
-Acrylic paints,6.42$
-Primer,4.39$
+PLA 1KG white,11.50$ -
+Blue Spray paint,4.39$ -
+Acrylic paints,6.42$ -
+Primer,4.39$ -
