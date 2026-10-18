@@ -14,4 +14,4 @@ Also for the kind reviewer working on my project... please note that the origina
 PLA 1KG white,11.50$ -
 Blue Spray paint,4.39$ -
 Acrylic paints,6.42$ -
-Primer,4.39$ -
+Primer,4.39$ 
