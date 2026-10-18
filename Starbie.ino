@@ -1,8 +1,3 @@
-/*
-  Starbie Custom: Motion-Controlled / Button-Navigated Digital Pet
-  Target Board: Seeed XIAO ESP32-C3
-*/
-
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -11,13 +6,11 @@
 #include <Preferences.h>
 #include <math.h>
 
-// =========================== BEGINNER SETTINGS ===========================
-
-const int I2C_SDA_PIN = 6;       // XIAO D4: OLED + MPU6050 SDA
-const int I2C_SCL_PIN = 7;       // XIAO D5: OLED + MPU6050 SCL
-const int DHT_PIN = 3;           // XIAO D1: DHT11 data
-const int BUTTON_ONE_PIN = 4;    // XIAO D2: Opens Menu / Confirms Selection
-const int BUTTON_TWO_PIN = 5;    // XIAO D3: Cycles through actions
+const int I2C_SDA_PIN = 6;       
+const int I2C_SCL_PIN = 7;      
+const int DHT_PIN = 3;           
+const int BUTTON_ONE_PIN = 4;    
+const int BUTTON_TWO_PIN = 5;   
 
 const bool USE_DHT11 = false;
 
@@ -35,6 +28,7 @@ enum PetReaction {
   JUMP_REACTION,
   HEART_REACTION,
   RUN_REACTION,
+  SWIM_REACTION,
 };
 
 struct MenuItem {
@@ -46,16 +40,16 @@ struct MenuItem {
 };
 
 const MenuItem MENU_ITEMS[] = {
-  {"NAP",    1,  18, -4, NAP_REACTION},
-  {"PLAY",  12, -9, -5, RUN_REACTION},
-  {"FEED",   3,  2,  18, JUMP_REACTION},
-  {"PET",    7,  0,   0, HEART_REACTION},
-  {"CLEAN",  5, -2,   5, JUMP_REACTION},
-  {"TRAIN", 10, -8,  -3, RUN_REACTION},
+  {"CUDDLE",  6,   4,   0, HEART_REACTION},  
+  {"FEED",    3,   2,  18, JUMP_REACTION},   
+  {"PET",     7,   0,   0, HEART_REACTION},  
+  {"DIVE",   10,  -7,  -7, SWIM_REACTION},   
+  {"DRIFT",   1,  18,  -4, NAP_REACTION},    
+  {"PLAY",   12,  -9,  -5, RUN_REACTION}     
 };
 const int MENU_ITEM_COUNT = sizeof(MENU_ITEMS) / sizeof(MENU_ITEMS[0]);
 
-const float SHAKE_THRESHOLD = 7.0f;
+const float SHAKE_THRESHOLD = 10.0f;
 const int SHAKE_JOY_CHANGE = 5;
 const int SHAKE_ENERGY_CHANGE = -2;
 const int SHAKE_FULLNESS_CHANGE = -1;
@@ -106,8 +100,6 @@ const uint8_t PROGMEM PET_SPRITE[] = {
   0x00, 0x00, 0x00, 0x00,
   0x00, 0x00, 0x00, 0x00,
 };
-
-// ===========================================================================
 
 const int SCREEN_WIDTH = 128;
 const int SCREEN_HEIGHT = 64;
@@ -163,6 +155,8 @@ uint32_t petJumpStartedAt = 0;
 uint32_t nappingUntil = 0;
 uint32_t heartAnimationEndsAt = 0;
 uint32_t playRunStartedAt = 0;
+uint32_t swimStartedAt = 0;
+const uint32_t SWIM_DURATION_MS = 4000;
 int nappingPetX = 0;
 
 int keepInRange(int value, int smallest, int largest) {
@@ -173,13 +167,6 @@ void changePet(int joyChange, int energyChange, int fullnessChange) {
   pet.joy = keepInRange(pet.joy + joyChange, 0, 100);
   pet.energy = keepInRange(pet.energy + energyChange, 0, 100);
   pet.fullness = keepInRange(pet.fullness + fullnessChange, 0, 100);
-
-  Serial.print("[PET STATS] Joy: ");
-  Serial.print(pet.joy);
-  Serial.print(" | Energy: ");
-  Serial.print(pet.energy);
-  Serial.print(" | Fullness: ");
-  Serial.println(pet.fullness);
 }
 
 void loadPet() {
@@ -273,6 +260,10 @@ bool isPlaying() {
   return playRunStartedAt != 0 && millis() - playRunStartedAt < playRunDuration();
 }
 
+bool isSwimming() {
+  return swimStartedAt != 0 && millis() - swimStartedAt < SWIM_DURATION_MS;
+}
+
 int playRunX(uint32_t now) {
   const int farthestX = SCREEN_WIDTH - PET_SPRITE_WIDTH;
   const uint32_t lapAge = (now - playRunStartedAt) % PLAY_LAP_MS;
@@ -281,12 +272,22 @@ int playRunX(uint32_t now) {
                          : static_cast<int>((1.0f - progress) * 2.0f * farthestX);
 }
 
+int swimX(uint32_t now) {
+  const int farthestX = SCREEN_WIDTH - PET_SPRITE_WIDTH;
+  const uint32_t swimAge = now - swimStartedAt;
+  const float progress = static_cast<float>(swimAge) / SWIM_DURATION_MS;
+  return static_cast<int>(progress * farthestX);
+}
+
 void updatePetTimers() {
   if (nappingUntil != 0 && !isNapping()) {
     nappingUntil = 0;
   }
   if (playRunStartedAt != 0 && !isPlaying()) {
     playRunStartedAt = 0;
+  }
+  if (swimStartedAt != 0 && !isSwimming()) {
+    swimStartedAt = 0;
   }
 }
 
@@ -303,8 +304,8 @@ void checkForShake() {
       now - lastShakeAt >= SHAKE_COOLDOWN_MS) {
     lastShakeAt = now;
     nappingUntil = 0;
+    swimStartedAt = 0;
     shakeAnimationEndsAt = now + 350;
-    Serial.println("[EVENT] Pet Shaken!");
     changePet(SHAKE_JOY_CHANGE, SHAKE_ENERGY_CHANGE, SHAKE_FULLNESS_CHANGE);
     savePet();
   }
@@ -312,9 +313,6 @@ void checkForShake() {
 
 void chooseMenuItem() {
   const MenuItem &item = MENU_ITEMS[selectedMenuItem];
-  Serial.print("[ACTION EXECUTED] ");
-  Serial.println(item.label);
-
   changePet(item.joyChange, item.energyChange, item.fullnessChange);
   savePet();
 
@@ -322,6 +320,7 @@ void chooseMenuItem() {
   nappingUntil = 0;
   heartAnimationEndsAt = 0;
   playRunStartedAt = 0;
+  swimStartedAt = 0;
 
   if (item.reaction == NAP_REACTION) {
     petJumpStartedAt = 0;
@@ -331,6 +330,9 @@ void chooseMenuItem() {
     petJumpStartedAt = 0;
     playRunStartedAt = now;
     heartAnimationEndsAt = now + playRunDuration();
+  } else if (item.reaction == SWIM_REACTION) {
+    petJumpStartedAt = 0;
+    swimStartedAt = now;
   } else {
     petJumpStartedAt = now;
     if (item.reaction == HEART_REACTION) {
@@ -341,23 +343,18 @@ void chooseMenuItem() {
 }
 
 void handleButtons() {
-  // Button 1: Opens Menu / Confirms Selection
   if (wasPressed(buttonOne)) {
     if (currentView == PET_VIEW) {
       currentView = MENU_VIEW;
       selectedMenuItem = 0;
-      Serial.println("[UI] Opened Actions Menu");
     } else if (currentView == MENU_VIEW) {
       chooseMenuItem();
     }
   }
 
-  // Button 2: Cycles through available actions when menu is open
   if (wasPressed(buttonTwo)) {
     if (currentView == MENU_VIEW) {
       selectedMenuItem = (selectedMenuItem + 1) % MENU_ITEM_COUNT;
-      Serial.print("[UI] Highlighted Action: ");
-      Serial.println(MENU_ITEMS[selectedMenuItem].label);
     }
   }
 }
@@ -393,7 +390,6 @@ void drawSleepZs(uint32_t now, int petX, int petY) {
   display.print("z");
 }
 
-// Display stats HUD in the top right corner
 void drawTopRightStats() {
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
@@ -410,6 +406,29 @@ void drawTopRightStats() {
   display.print(pet.fullness);
 }
 
+void drawFish(int x, int y) {
+  display.fillTriangle(x, y + 2, x + 4, y, x + 4, y + 4, SSD1306_WHITE);
+  display.drawPixel(x + 5, y + 1, SSD1306_WHITE);
+  display.drawPixel(x + 5, y + 3, SSD1306_WHITE);
+}
+
+void drawSeaweed(int x, uint32_t now) {
+  int sway = static_cast<int>(sinf(now / 200.0f + x) * 2.0f);
+  display.drawLine(x, 63, x + sway, 50, SSD1306_WHITE);
+  display.drawLine(x + sway, 50, x + sway - 1, 38, SSD1306_WHITE);
+}
+
+void drawSwimScene(uint32_t now) {
+  drawSeaweed(10, now);
+  drawSeaweed(25, now + 500);
+  drawSeaweed(110, now + 1000);
+  
+  int fish1X = (now / 15UL) % 150 - 20;
+  int fish2X = 120 - ((now / 20UL) % 150);
+  drawFish(fish1X, 35);
+  drawFish(fish2X, 20);
+}
+
 void drawPet() {
   display.clearDisplay();
   drawTopRightStats();
@@ -419,13 +438,17 @@ void drawPet() {
   if (isPlaying()) {
     petX = playRunX(now);
   }
+  if (isSwimming()) {
+    petX = swimX(now);
+    drawSwimScene(now);
+  }
   int petY = SCREEN_HEIGHT - PET_SPRITE_HEIGHT;
 
   if (now < shakeAnimationEndsAt) {
     petX += static_cast<int>(sinf(now / 18.0f) * 3.0f);
   }
 
-  if (!isNapping() && petJumpStartedAt != 0) {
+  if (!isNapping() && !isSwimming() && petJumpStartedAt != 0) {
     const uint32_t animationAge = now - petJumpStartedAt;
 
     if (animationAge < PET_PRE_JUMP_MS) {
@@ -495,7 +518,6 @@ void drawCurrentView() {
 void setup() {
   Serial.begin(115200);
   delay(1000);
-  Serial.println("\n--- STARBIE FIRMWARE BOOT ---");
 
   Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);
   setUpButton(buttonOne);
@@ -504,9 +526,6 @@ void setup() {
 
   if (display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDRESS)) {
     displayFound = true;
-    Serial.println("[HARDWARE] OLED Display: READY");
-  } else {
-    Serial.println("[HARDWARE WARNING] OLED not detected! Entering Headless Serial Debug Mode.");
   }
 
   mpuFound = mpu.begin(MPU6050_ADDRESS, &Wire);
@@ -514,9 +533,6 @@ void setup() {
     mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
     mpu.setGyroRange(MPU6050_RANGE_500_DEG);
     mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
-    Serial.println("[HARDWARE] MPU6050 Sensor: READY");
-  } else {
-    Serial.println("[HARDWARE WARNING] MPU6050 not detected.");
   }
 
   if (USE_DHT11) {
@@ -524,7 +540,6 @@ void setup() {
     dhtFound = true;
   }
 
-  Serial.println("[SYSTEM] Setup complete. Ready for input.");
   drawCurrentView();
 }
 
