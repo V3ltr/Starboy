@@ -6,7 +6,7 @@
 > [!NOTE]
 > This devlog is mirrored from [Half Life](https://halflife.hackclub.com) – [open the project](https://halflife.hackclub.com/projects/cmuvmrv6t00m401o9g5okgfds). Editing it here will not change the platform's copy, and the next sync overwrites this file.
 
-> A tiny motion-controlled digital pet, basically a desktop Tamagotchi. Totally not a Starboy.
+> Thi to mags hi that uses simple code and a 3D printable enclosure. It can sit on your desk or act like a desktop pet without the high maintanence!
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
