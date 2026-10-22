@@ -1,0 +1,12 @@
+You may be wondering… how do I put this 3D model together? 
+Well, here you can find  the answer you seek!
+
+1) Take your components and lay them out.
+
+2) Now we will prepare the keys. You have to take the keycaps and fit them onto the switches lining up the cross.
+
+3) Put in the PCB and any other components inside bottom of the enclosure.
+
+4) After that, line the rim of the bottom part of the enclosure with supreglue. 
+
+5) Then put the top on, but make sure to line them up well. Just wait and you have your enclosure.
