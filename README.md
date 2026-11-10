@@ -1,6 +1,7 @@
 # Starboy
-<img width="824" height="699" alt="image" src="https://github.com/user-attachments/assets/ff97d0c9-04cb-4db8-b760-7943768045ae" />
-<img width="1588" height="1773" alt="Screenshot 2026-10-16 170237" src="https://github.com/user-attachments/assets/1edf760a-695f-445b-a1a5-5bff45753138" />
+<img width="1110" height="892" alt="Screenshot 2026-11-10 063950" src="https://github.com/user-attachments/assets/af1b7982-de20-4cde-9396-6cec0be595db" />
+<img width="1354" height="966" alt="Screenshot" src="https://github.com/user-attachments/assets/4480c967-67c5-416a-8427-4602d9390cfb" />
+
 
 This is a Starboy and no, not a starbie :] 
 This project only includes only the PCB but in my other projects you can find the enclosure and etc.
